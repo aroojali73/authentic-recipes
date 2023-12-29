@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const User = require('../models/User'); // Adjust the path accordingly
+const User = require('../models/User');
 const Recipe = require('../models/Recipe');
 
 // Registration logic

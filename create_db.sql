@@ -44,3 +44,4 @@ CREATE TABLE restaurants (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 ALTER TABLE restaurants MODIFY user_id INT NULL;
+

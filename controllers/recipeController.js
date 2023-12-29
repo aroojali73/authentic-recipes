@@ -102,11 +102,10 @@ exports.deleteRecipe = (req, res) => {
 
 // Submit a review
 exports.submitReview = (req, res) => {
-    const userId = req.session.userId; // Assuming you store the user's ID in the session
+    const userId = req.session.userId;
     const recipeId = req.params.id;
     const { comment } = req.body;
 
-    // Assuming you have a method in your Recipe model to save a review
     Recipe.saveReview(recipeId, userId, comment, (err) => {
         if (err) {
             console.error('Error submitting review:', err);
@@ -119,10 +118,9 @@ exports.submitReview = (req, res) => {
 exports.rateRecipe = (req, res) => {
     const recipeId = req.params.id;
     const rating = req.body.rating;
-    const userId = req.session.userId; // Assuming you store the user's ID in the session
+    const userId = req.session.userId; 
 
     // Logic to save the rating to the database
-    // This might involve a call to a method in your Recipe model
     Recipe.saveRating(recipeId, userId, rating, (err, result) => {
         if (err) {
             // Handle error (e.g., render an error page or send a response)
