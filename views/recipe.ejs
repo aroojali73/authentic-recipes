@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% if (recipe && Array.isArray(recipe) && recipe.length > 0) { %>
+        <title><%= recipe[0].title %></title>
+    <% } else if (recipe && !Array.isArray(recipe)) { %>
+        <title><%= recipe.title %></title>
+    <% } else { %>
+        <title>Recipe Not Found</title>
+    <% } %>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="profile-page">
+    <div class="recipe-container">
+        <div class="recipe-content">
+            <% if (recipe) { %>
+                <h1><%= recipe[0].title %></h1>
+                <p><%= recipe[0].description %></p>
+                
+                <h2>Ingredients</h2>
+                <p><%= recipe[0].ingredients %></p>
+                
+                <h2>Instructions</h2>
+                <p><%= recipe[0].instructions %></p>
+                
+                <h2>Story</h2>
+                <p><%= recipe[0].story %></p>
+            <% } else { %>
+                <p>Recipe not found.</p>
+            <% } %>
+        </div>
+        <div class="recipe-actions">
+            <form action="/recipes/edit/<%= recipe[0].id %>" method="POST">
+                <button class="edit-but" type="submit">Edit Recipe</button>
+            </form>
+            <form action="/recipes/delete/<%= recipe[0].id %>" method="POST">
+                <button class="delete-but-ag" type="submit">Delete Recipe</button>
+            </form>
+
+            <!-- Display the average rating -->
+            <h2>Average Rating: <%= averageRating %>/5</h2>
+
+            <!-- Form to submit a new rating -->
+            <form action="/recipes/<%= recipe[0].id %>/rate" method="post">
+                <input type="number" name="rating" min="1" max="5" required>
+                <button class="sub-rating" type="submit">Submit Rating</button>
+            </form>
+
+            <!-- Form to submit a new review -->
+            <form action="/recipes/<%= recipe[0].id %>/review" method="post">
+                <textarea name="comment" required></textarea>
+                <button class="sub-review" type="submit">Submit Review</button>
+            </form>
+
+            <!-- Display reviews -->
+            <h2>Reviews:</h2>
+            <ul>
+                <% reviews.forEach(function(review) { %>
+                    <li><%= review.comment %> - <%= review.user_id %> (User ID)</li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+    <a href="/users/profile">Back to Profile</a>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= user.username %>'s Profile</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="profile-page">
+    <h1 class="username"><%= user.username %>'s Profile</h1>
+    <h2 class="recipes-title">Your Recipes</h2>
+    <% if(userRecipes && userRecipes.length > 0) { %>
+        <ul>
+            <% userRecipes.forEach(function(recipe) { %>
+                <li><a href="/recipes/<%= recipe.id %>"><%= recipe.title %></a></li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p class="no-recipes">You have not added any recipes yet.</p>
+    <% } %> 
+    <a class="add-recipe-btn" href="/recipes/add">Add a New Recipe</a>
+
+    <form id="searchForm">
+        <input class= "search-sep" type="text" id="searchInput" name="ingredient" placeholder="Find your food">
+        <button type="submit">Search</button>
+    </form>
+    <a class = "list-res-btn" href="/restaurants/list">List Restaurants</a>
+    <a class = "search-res-btn" href="/restaurants/search">Search Restaurants</a>
+    
+    <script>
+        document.getElementById('searchForm').onsubmit = function() {
+            var searchTerm = document.getElementById('searchInput').value;
+            var newTabUrl = 'https://www.google.com/search/' + encodeURIComponent(searchTerm);
+            window.open(newTabUrl, '_blank');
+            return false; // Prevent actual form submission
+        };
+    </script>
+</body>
+</html>
+
+

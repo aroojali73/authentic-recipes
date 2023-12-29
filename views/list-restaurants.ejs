@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Restaurants</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="list-page">
+    <h1 class= "add-res-name" >All Restaurants</h1>
+
+    <!-- Add Restaurant Button -->
+    <a class="list-res-btn1" href="/restaurants/add"><button>Add Restaurant</button></a>
+
+    <% if(restaurants && restaurants.length > 0) { %>
+        <ul>
+            <% restaurants.forEach(function(restaurant) { %>
+                <li>
+                    <h2><%= restaurant.name %></h2>
+                    <p>Cuisine: <%= restaurant.cuisine_type %></p>
+                    <p>Address: <%= restaurant.address %></p>
+                </li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No restaurants found.</p>
+    <% } %>
+</body> 
+</html>

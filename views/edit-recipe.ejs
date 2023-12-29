@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Recipe</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Edit Recipe</h1>
+    <form method="POST" action="/recipes/<%= recipe[0].id %>">
+        <input type="text" name="title" value="<%= recipe[0].title %>" required>
+        <textarea name="description"><%= recipe[0].description %></textarea>
+        <textarea name="ingredients"><%= recipe[0].ingredients %></textarea>
+        <textarea name="instructions"><%= recipe[0].instructions %></textarea>
+        <textarea name="story"><%= recipe[0].story %></textarea>
+        <button type="submit">Update Recipe</button>
+    </form>
+</body>
+</html>

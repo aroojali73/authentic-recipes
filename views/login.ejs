@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="form-box">
+        <h1>Login</h1>
+        <form method="POST" action="/users/login">
+            <div class="inputbox">
+                <ion-icon name="person-outline"></ion-icon>
+                <input type="text" name="username" required>
+                <label>Username</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input type="password" name="password" required>
+                <label>Password</label>
+            </div>
+            <button class="login-but" type="submit">Login</button>
+        </form>
+        <div class="register">
+            <p>Don't have an account? <a href="/users/register">Register here</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
